@@ -1,0 +1,122 @@
+.features {
+  position: relative;
+  width: 100%;
+  background-color: whitesmoke;
+  padding-top: 25vh;
+  padding-bottom: 10vh;
+}
+
+.features__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.features__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.features__bigHeading {
+  max-width: 500px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--very-dark-violet);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.features__smallHeading {
+  max-width: 500px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--grayish-violet);
+  text-align: center;
+}
+
+.features__items {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 30px;
+  margin-top: 18vh;
+  margin-bottom: 20vh;
+}
+
+.features__itemsHrLine {
+  position: absolute;
+  top: 57%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 7px;
+  background-color: var(--cyan);
+  z-index: 1;
+}
+
+.features__item:nth-child(2) {
+  top: 40px;
+}
+
+.features__item:nth-child(3) {
+  top: 80px;
+}
+
+.features__item {
+  position: relative;
+  background-color: white;
+  border-radius: 6px;
+  padding: 50px 30px;
+  box-shadow: 0 4px 8px 1 rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+@media only screen and (max-width: 870px) {
+  .features {
+    padding-bottom: 0;
+  }
+
+  .features__items {
+    grid-template-columns: 70%;
+    row-gap: 70px;
+    justify-content: center;
+  }
+
+  .features__item:nth-child(2) {
+    top: 0;
+  }
+
+  .features__item:nth-child(3) {
+    top: 0;
+  }
+
+  .features__item {
+    padding: 50px 40px;
+  }
+
+  .features__itemsHrLine {
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    width: 7px;
+    height: 99%;
+  }
+}
+
+/* Responsive media queries */
+
+@media only screen and (max-width: 635px) {
+  .features__bigHeading {
+    font-size: 1.7rem;
+  }
+
+  .features__smallHeading {
+    max-width: unset;
+    padding: 0 16vw;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .features__items {
+    grid-template-columns: 90%;
+  }
+}

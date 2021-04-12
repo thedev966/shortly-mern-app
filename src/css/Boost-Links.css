@@ -1,0 +1,54 @@
+.boost-links {
+  width: 100%;
+  height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark-violet);
+  background-image: url("../assets/bg-boost-desktop.svg");
+  background-size: cover;
+  background-position: 55% 55%;
+}
+
+.boost-links__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boost-links__heading {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.boost-links__button {
+  width: 135px;
+  padding: 10px;
+  border-radius: 40px;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  background-color: var(--cyan);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.boost-links__button:hover {
+  background-color: #55fbfb;
+}
+
+/* Responsive media queries */
+
+@media only screen and (max-width: 635px) {
+  .boost-links__heading {
+    font-size: 1.4rem;
+  }
+
+  .boost-links__button {
+    width: 145px;
+  }
+}
