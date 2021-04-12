@@ -80,7 +80,8 @@
 @media only screen and (max-width: 573px) {
   .link__original,
   .link__short {
-    overflow-x: scroll;
+    overflow-x: hidden;
     white-space: nowrap;
+    font-size: 13px;
   }
 }
