@@ -78,7 +78,8 @@
 /* Responsive media queries */
 
 @media only screen and (max-width: 573px) {
-  .link__original {
+  .link__original,
+  .link__short {
     overflow-x: hidden;
     white-space: nowrap;
   }
