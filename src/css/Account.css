@@ -1,0 +1,186 @@
+.account__body {
+  width: 100%;
+  margin-top: 8vh;
+  margin-bottom: 8vh;
+  background-color: var(--cyan);
+  border-radius: 10px;
+  padding: 20px 30px;
+  transition: all 0.2s ease;
+}
+
+.account__heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.account__userInfo {
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid #9acdf5;
+  padding-bottom: 20px;
+}
+
+.account__userInfoLeft {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.account__nameLabel,
+.account__emailLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: white;
+}
+
+.account__name,
+.account__email {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: white;
+  margin-left: 6px;
+}
+
+.account__userInfoRight {
+  display: flex;
+  flex-direction: column;
+}
+
+.account__plan {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--red);
+}
+
+.account__dailyCount {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+}
+
+.account__linksHistory {
+  margin-top: 16px;
+}
+
+.account__myLinks {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.account__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.account__link:hover {
+  transform: translateX(-5px);
+}
+
+.account__originalUrl {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dark-violet);
+}
+
+.account__linkRight {
+  display: flex;
+  align-items: center;
+}
+
+.account__shortenedUrl {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cyan);
+  margin-right: 10px;
+}
+
+.account__linkDelete {
+  min-width: 80px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 0;
+  outline: none;
+  background-color: var(--red);
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.account__linkDelete:hover {
+  opacity: 0.8;
+}
+
+/* Responsive media queries */
+
+@media only screen and (max-width: 910px) {
+  .account__link {
+    flex-direction: column;
+  }
+
+  .account__linkRight {
+    flex-direction: column;
+  }
+
+  .account__originalUrl,
+  .account__shortenedUrl {
+    margin-bottom: 6px;
+  }
+
+  .account__linkDelete {
+    width: 150px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .account__body {
+    padding: 20px;
+  }
+
+  .account__userInfo {
+    flex-direction: column;
+  }
+
+  .account__userInfoRight {
+    margin-top: 20px;
+  }
+
+  .account__heading,
+  .account__myLinks {
+    font-size: 1.35rem;
+  }
+
+  .account__linkRight {
+    width: 100%;
+  }
+
+  .account__linkDelete {
+    width: 85%;
+  }
+
+  .account__originalUrl {
+    width: 85%;
+    text-align: center;
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
+
+  .account__originalUrl::-webkit-scrollbar {
+    display: none;
+  }
+
+  .account__link:hover {
+    transform: translateX(0);
+  }
+}

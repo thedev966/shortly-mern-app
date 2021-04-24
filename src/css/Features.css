@@ -9,6 +9,7 @@
 .features__container {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .features__heading {

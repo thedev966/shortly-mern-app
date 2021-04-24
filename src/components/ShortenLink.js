@@ -3,13 +3,20 @@ import "../css/ShortenLink.css";
 import validUrl from "valid-url";
 import axios from "axios";
 import Link from "./Link";
+import Loader from "react-loader-spinner";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn, selectUser } from "../features/userSlice";
 
 const ShortenLink = () => {
+  const [isProccessing, setIsProccessing] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
   const urlRef = useRef();
   const errorRef = useRef();
   const linksListRef = useRef();
   const [error, setError] = useState(null);
   const [links, setLinks] = useState([]);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const user = useSelector(selectUser);
 
   const showError = (msg) => {
     setError(msg);
@@ -20,6 +27,24 @@ const ShortenLink = () => {
   const refreshInput = () => {
     urlRef.current.style.border = "0";
     errorRef.current.innerText = "";
+  };
+
+  const substractLinksUsed = async () => {
+    const res = await axios.post(
+      process.env.REACT_APP_API_URI + "/api/auth/userLimit",
+      JSON.stringify({
+        owner: isLoggedIn ? user.id : "none",
+      }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (res.data.success) {
+      console.log(res.data.message);
+    }
   };
 
   const shortenLink = async () => {
@@ -35,10 +60,13 @@ const ShortenLink = () => {
       } else {
         refreshInput();
         // send api call
+        setIsProccessing(true);
+        setIsDisabled(true);
         const res = await axios.post(
           process.env.REACT_APP_API_URI + "/api/link/shorten",
           JSON.stringify({
             url: urlInput,
+            owner: isLoggedIn ? user.id : "none",
           }),
           {
             headers: {
@@ -50,13 +78,19 @@ const ShortenLink = () => {
           // link was shortened
           console.log(res.data);
           setLinks((currentLinks) => [...currentLinks, res.data.shortenedLink]);
+          setIsProccessing(false);
+          setIsDisabled(false);
           if (linksListRef.current.offsetHeight > 258) {
             linksListRef.current.style.overflowY = "scroll";
             linksListRef.current.style.height = "258px";
           }
+          // substract - 1 daily used links for this user
+          substractLinksUsed();
         } else {
           // failed attempt
           setError(res.data.error);
+          setIsProccessing(false);
+          setIsDisabled(false);
         }
       }
     }
@@ -71,16 +105,28 @@ const ShortenLink = () => {
         type="text"
         placeholder="Shorten a link here.."
       />
+      <span ref={errorRef} className="shorten-link__error">
+        {error !== null && error}
+      </span>
       <button
         className="shorten-link__button"
         type="submit"
         onClick={shortenLink}
+        disabled={isDisabled}
       >
-        Shorten It!
+        {isProccessing ? (
+          <Loader
+            visible={isProccessing}
+            type="ThreeDots"
+            color="#00BFFF"
+            height={20}
+            width={20}
+          />
+        ) : (
+          "Shorten It!"
+        )}
       </button>
-      <span ref={errorRef} className="shorten-link__error">
-        {error !== null && error}
-      </span>
+
       <div ref={linksListRef} className="shorten-link__linksList">
         {links &&
           links.map((link) => (

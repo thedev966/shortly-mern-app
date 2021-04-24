@@ -75,12 +75,39 @@
 
 .header .MuiSvgIcon-root {
   position: absolute;
+  top: 30px;
   right: 0;
   display: none;
   width: 35px;
   height: 35px;
   color: var(--grayish-violet);
   cursor: pointer;
+}
+
+.auth_modal {
+  min-width: 420px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 45px 50px;
+  border-radius: 8px;
+  border: 0;
+  outline: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.4s ease-in;
+  z-index: 100;
+}
+
+.auth_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
 }
 
 /* Responsive media queries */
@@ -133,5 +160,19 @@
     margin-top: 15px;
     font-size: 15px;
     color: white;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .auth_modal {
+    min-width: 380px;
+    padding: 45px 36px;
+  }
+}
+
+@media only screen and (max-width: 410px) {
+  .auth_modal {
+    min-width: 360px;
+    padding: 45px 30px;
   }
 }

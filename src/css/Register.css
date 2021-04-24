@@ -1,0 +1,86 @@
+.register {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.register__heading {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.register__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.register__formInput {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid var(--grayish-violet);
+  outline: none;
+  margin-top: 12px;
+}
+
+.register__formBtn {
+  padding: 9px;
+  border-radius: 6px;
+  background-color: var(--cyan);
+  color: white;
+  outline: none;
+  border: 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 14px;
+}
+
+.register__formBtn:hover {
+  opacity: 0.6;
+}
+
+.MuiSvgIcon-root {
+  position: absolute;
+  top: 8vh;
+  right: 4vw;
+  cursor: pointer;
+  color: var(--very-dark-blue);
+}
+
+.MuiSvgIcon-root:hover {
+  opacity: 0.8;
+}
+
+.register__noAccount {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--grayish-violet);
+  margin-top: 10px;
+  text-align: center;
+}
+
+.register_goToLogin {
+  font-weight: 600;
+  color: var(--cyan);
+}
+
+.registerNameErr,
+.registerEmailErr,
+.registerPassErr,
+.registerPass2Err {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--red);
+  padding-top: 3px;
+}
+
+.error {
+  border: 1px solid var(--red);
+}
+
+.success {
+  border: 1px solid var(--cyan);
+}

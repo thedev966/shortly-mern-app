@@ -4,9 +4,10 @@
   left: 50%;
   transform: translateX(-50%);
   margin: 0 auto;
-  padding: 38px 40px;
+  padding: 32px 40px;
   display: flex;
   width: 84%;
+  height: max-content;
   align-items: center;
   border-radius: 6px;
   background-image: url("../assets/bg-shorten-desktop.svg");
@@ -39,7 +40,11 @@
 }
 
 .shorten-link__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 130px;
+  height: 48px;
   padding: 14px 10px;
   border-radius: 6px;
   outline: none;
@@ -66,7 +71,7 @@
   display: flex;
   flex-direction: column;
   z-index: 30;
-  padding: 15px 0;
+  padding: 8px 0;
   background-color: whitesmoke;
 }
 
@@ -76,33 +81,33 @@
   .shorten-link {
     flex-direction: column;
     width: 80%;
-    padding: 20px;
+    padding: 15px 18px;
+    top: -10vh;
   }
 
   .shorten-link__input {
     width: 100%;
-    margin-bottom: 24px;
+    margin-bottom: 4px;
+    padding: 12px 20px;
   }
 
   .shorten-link__button {
     width: 100%;
+    height: 45px;
     margin-left: 0;
     padding: 10px;
   }
 
   .shorten-link__error {
-    bottom: 10vh;
-    left: 3vw;
+    width: 100%;
+    position: relative;
+    bottom: unset;
+    left: unset;
+    margin-bottom: 6px;
   }
 
   .shorten-link__linksList {
     top: 25vh;
-  }
-}
-
-@media only screen and (max-width: 573px) {
-  .shorten-link__error {
-    left: 5vw;
   }
 }
 
