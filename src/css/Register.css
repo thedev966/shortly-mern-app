@@ -44,8 +44,8 @@
 
 .MuiSvgIcon-root {
   position: absolute;
-  top: 8vh;
-  right: 4vw;
+  top: 5vh;
+  right: 5vw;
   cursor: pointer;
   color: var(--very-dark-blue);
 }
