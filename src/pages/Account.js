@@ -45,7 +45,7 @@ const Account = () => {
   };
 
   const getCurrentLinksLimit = async () => {
-    const res = await axios.get("/api/auth/currentLimit/" + user.id);
+    const res = await axios.get("/api/auth/currentLimit/" + user?.id);
     setUsedLinksCount(res.data.used_links);
   };
 
