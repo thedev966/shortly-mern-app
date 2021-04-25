@@ -48,7 +48,6 @@ const Login = ({ closeModal }) => {
       console.log(res.data);
       if (res.data.loggedIn) {
         setIsLoggedIn(true);
-        window.location.reload();
       } else if (res.data.error) {
         setIsLoggedIn(false);
         showAlert(res.data.error);
