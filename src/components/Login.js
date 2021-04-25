@@ -53,7 +53,6 @@ const Login = ({ closeModal }) => {
       if (res.data.loggedIn) {
         setIsLoggedIn(true);
         dispatch(loginUser(res.data.user));
-        window.location.reload();
       } else if (res.data.error) {
         setIsLoggedIn(false);
         showAlert(res.data.error);

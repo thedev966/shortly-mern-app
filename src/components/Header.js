@@ -91,7 +91,7 @@ const Header = ({ isLoggedIn }) => {
         </ul>
 
         {!isLoggedIn && (
-          <Link style={{ width: "100%" }} to="/login">
+          <Link className="button__container" to="/login">
             <button
               onClick={openAuthModal}
               className="header__rightButton loginBtn"
@@ -102,7 +102,7 @@ const Header = ({ isLoggedIn }) => {
         )}
 
         {!isLoggedIn && (
-          <Link style={{ width: "100%" }} to="/register">
+          <Link className="button__container" to="/register">
             <button
               onClick={openAuthModal}
               className="header__rightButton signUpBtn"

@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.d3e68f47.chunk.css",
-    "main.js": "/static/js/main.0fd8e68d.chunk.js",
-    "main.js.map": "/static/js/main.0fd8e68d.chunk.js.map",
+    "main.css": "/static/css/main.6ff30dc6.chunk.css",
+    "main.js": "/static/js/main.0c84ebcb.chunk.js",
+    "main.js.map": "/static/js/main.0c84ebcb.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.ea674a23.js",
     "runtime-main.js.map": "/static/js/runtime-main.ea674a23.js.map",
     "static/js/2.0db2358b.chunk.js": "/static/js/2.0db2358b.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.4bea66bd.chunk.js": "/static/js/3.4bea66bd.chunk.js",
     "static/js/3.4bea66bd.chunk.js.map": "/static/js/3.4bea66bd.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.d3e68f47.chunk.css.map": "/static/css/main.d3e68f47.chunk.css.map",
+    "static/css/main.6ff30dc6.chunk.css.map": "/static/css/main.6ff30dc6.chunk.css.map",
     "static/js/2.0db2358b.chunk.js.LICENSE.txt": "/static/js/2.0db2358b.chunk.js.LICENSE.txt",
     "static/media/Boost-Links.css": "/static/media/bg-boost-desktop.772154c9.svg",
     "static/media/ShortenLink.css": "/static/media/bg-shorten-desktop.0d9742f4.svg",
@@ -27,7 +27,7 @@
   "entrypoints": [
     "static/js/runtime-main.ea674a23.js",
     "static/js/2.0db2358b.chunk.js",
-    "static/css/main.d3e68f47.chunk.css",
-    "static/js/main.0fd8e68d.chunk.js"
+    "static/css/main.6ff30dc6.chunk.css",
+    "static/js/main.0c84ebcb.chunk.js"
   ]
 }
