@@ -88,10 +88,10 @@ const Account = () => {
           <div className="account__userInfo">
             <div className="account__userInfoLeft">
               <h3 className="account__nameLabel">
-                Full Name: <span className="account__name">{user.name}</span>
+                Full Name: <span className="account__name">{user?.name}</span>
               </h3>
               <h3 className="account__emailLabel">
-                Email: <span className="account__email">{user.email}</span>
+                Email: <span className="account__email">{user?.email}</span>
               </h3>
             </div>
             <div className="account__userInfoRight">
