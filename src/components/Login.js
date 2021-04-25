@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import validateLoginInput from "../validation/validateLogin";
 import axios from "../axios";
 import Alert from "./Alert";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../features/userSlice";
 
 const Login = ({ closeModal }) => {
   const { register, handleSubmit, reset } = useForm();
@@ -15,6 +17,8 @@ const Login = ({ closeModal }) => {
   const [isOpenedAlert, setIsOpenedAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const showAlert = (msg) => {
     setAlertMessage(msg);
@@ -48,6 +52,8 @@ const Login = ({ closeModal }) => {
       console.log(res.data);
       if (res.data.loggedIn) {
         setIsLoggedIn(true);
+        dispatch(loginUser(res.data.user));
+        history.replace("/");
       } else if (res.data.error) {
         setIsLoggedIn(false);
         showAlert(res.data.error);
