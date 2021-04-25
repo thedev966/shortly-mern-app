@@ -55,7 +55,7 @@ const Account = () => {
       .post(
         "/api/link/getAll",
         JSON.stringify({
-          id: user.id,
+          id: user?.id,
         }),
         {
           headers: {
