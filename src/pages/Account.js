@@ -26,10 +26,10 @@ const Account = () => {
   const [totalLinks, setTotalLinks] = useState(0);
   const [allLinks, setAllLinks] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const [currentPageData, setCurrentPageData] = useState(null);
   const [usedLinksCount, setUsedLinksCount] = useState(0);
   const offset = currentPage * LINKS_PER_PAGE;
   const pageCount = Math.ceil(allLinks.length / LINKS_PER_PAGE);
+  const currentPageData = allLinks.slice(offset, offset + LINKS_PER_PAGE);
 
   const truncateLink = (link, char) => {
     return link.length <= char ? link : link.substring(0, char) + "...";
@@ -74,7 +74,6 @@ const Account = () => {
       .then((res) => {
         setAllLinks(res.data.links);
         setTotalLinks(res.data.links.length);
-        setCurrentPageData(allLinks.slice(offset, offset + LINKS_PER_PAGE));
       })
       .catch((err) => {
         console.log(err.message);
@@ -163,11 +162,13 @@ const Account = () => {
             nextLabel={"Next"}
             pageCount={pageCount}
             onPageChange={handlePageChange}
-            // containerClassName={"pagination"}
-            // previousLinkClassName={"pagination__link"}
-            // nextLinkClassName={"pagination__link"}
-            // disabledClassName={"pagination__link--disabled"}
-            // activeClassName={"pagination__link--active"}
+            containerClassName={"pagination"}
+            previousLinkClassName={"pagination__prevNext"}
+            nextLinkClassName={"pagination__prevNext"}
+            disabledClassName={"pagination__link--disabled"}
+            activeClassName={"pagination__link--active"}
+            pageClassName={"pagination__item"}
+            pageLinkClassName={"pagination__itemLink"}
           />
         </motion.div>
       </div>
