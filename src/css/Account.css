@@ -80,7 +80,6 @@
   border-radius: 6px;
   padding: 10px;
   margin-bottom: 12px;
-  cursor: pointer;
   transition: all 0.3s ease;
 }
 
@@ -167,16 +166,19 @@
 
   .account__linkDelete {
     width: 85%;
+    margin-top: 4px;
   }
 
-  .account__originalUrl {
-    width: 85%;
+  .account__originalUrl,
+  .account__shortenedUrl {
+    width: 88%;
     text-align: center;
     overflow-x: scroll;
     white-space: nowrap;
   }
 
-  .account__originalUrl::-webkit-scrollbar {
+  .account__originalUrl::-webkit-scrollbar,
+  .account__shortenedUrl::-webkit-scrollbar {
     display: none;
   }
 

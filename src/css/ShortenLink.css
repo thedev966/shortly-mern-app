@@ -58,10 +58,6 @@
   transition: all 0.2s ease;
 }
 
-.shorten-link__button:hover {
-  background-color: #55fbfb;
-}
-
 .shorten-link__linksList {
   width: 100%;
   height: max-content;

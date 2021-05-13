@@ -74,3 +74,15 @@
   color: var(--red);
   padding-top: 3px;
 }
+
+/* Responsive media queries */
+
+@media only screen and (max-width: 573px) {
+  .login__formBtn:hover {
+    opacity: 1;
+  }
+
+  .MuiSvgIcon-root {
+    top: 13vh;
+  }
+}

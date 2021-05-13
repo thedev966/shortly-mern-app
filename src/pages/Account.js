@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import "../css/Account.css";
 import axios from "../axios";
 import { motion } from "framer-motion";
+import Pusher from "pusher-js";
+import ReactPaginate from "react-paginate";
 
 const accountBodyVariant = {
   hidden: {
@@ -16,12 +18,18 @@ const accountBodyVariant = {
   },
 };
 
+const LINKS_PER_PAGE = 5;
+
 const Account = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
   const [totalLinks, setTotalLinks] = useState(0);
   const [allLinks, setAllLinks] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPageData, setCurrentPageData] = useState(null);
   const [usedLinksCount, setUsedLinksCount] = useState(0);
+  const offset = currentPage * LINKS_PER_PAGE;
+  const pageCount = Math.ceil(allLinks.length / LINKS_PER_PAGE);
 
   const truncateLink = (link, char) => {
     return link.length <= char ? link : link.substring(0, char) + "...";
@@ -66,6 +74,7 @@ const Account = () => {
       .then((res) => {
         setAllLinks(res.data.links);
         setTotalLinks(res.data.links.length);
+        setCurrentPageData(allLinks.slice(offset, offset + LINKS_PER_PAGE));
       })
       .catch((err) => {
         console.log(err.message);
@@ -73,6 +82,34 @@ const Account = () => {
 
     getCurrentLinksLimit();
   }, []);
+
+  useEffect(() => {
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    let pusher = new Pusher("fd3cf1f7d5fa1765585c", {
+      cluster: "eu",
+    });
+
+    let channel = pusher.subscribe("shortened-links");
+    channel.bind("delete-link", function (data) {
+      let link_id = data.deleted_link.id;
+      setAllLinks((prevState) =>
+        prevState.filter((link) => {
+          return link._id !== link_id;
+        })
+      );
+      setTotalLinks((prevTotal) => prevTotal - 1);
+    });
+
+    return () => {
+      pusher.unsubscribe("shortened-links");
+    };
+  }, []);
+
+  const handlePageChange = ({ selected: selectedPage }) => {
+    setCurrentPage(selectedPage);
+  };
 
   return (
     <div className="account">
@@ -105,7 +142,7 @@ const Account = () => {
             <h3 className="account__myLinks">
               My Links: {totalLinks && totalLinks}
             </h3>
-            {allLinks.map((link) => (
+            {currentPageData.map((link) => (
               <div className="account__link" key={link._id}>
                 <h3 className="account__originalUrl">
                   {truncateLink(link.original_url, 50)}
@@ -121,6 +158,17 @@ const Account = () => {
               </div>
             ))}
           </div>
+          <ReactPaginate
+            previousLabel={"Previous"}
+            nextLabel={"Next"}
+            pageCount={pageCount}
+            onPageChange={handlePageChange}
+            // containerClassName={"pagination"}
+            // previousLinkClassName={"pagination__link"}
+            // nextLinkClassName={"pagination__link"}
+            // disabledClassName={"pagination__link--disabled"}
+            // activeClassName={"pagination__link--active"}
+          />
         </motion.div>
       </div>
     </div>
